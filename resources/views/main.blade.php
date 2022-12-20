@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    
+
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     <style>
@@ -14,11 +14,13 @@
             width: .5rem;
             height: .5rem;
         }
+
         ::-webkit-scrollbar-thumb {
-            background: rgba(0,0,0,.15);
+            background: rgba(0, 0, 0, .15);
         }
+
         ::-webkit-scrollbar-thumb:hover {
-            background: rgba(0,0,0,.3);
+            background: rgba(0, 0, 0, .3);
         }
     </style>
 </head>
@@ -31,7 +33,7 @@
                 </h1>
             </div>
             <div class="p-4 h-[calc(100vh-8rem)] overflow-y-auto">
-                <ul class="h-full space-y-2">
+                {{-- <ul class="h-full space-y-2">
                     <li>
                         <a href="javascript:void(0)"
                             class="flex items-center px-4 py-3 text-sm font-bold text-yellow-900 bg-yellow-200 rounded-lg">
@@ -76,14 +78,107 @@
                             <span>Tags</span>
                         </a>
                     </li>
-                </ul>
+                </ul> --}}
+                <nav class="space-y-2">
+                    <a href="#" @click="$event.preventDefault(); open = !open"
+                        class="flex items-center p-2 text-gray-500 transition-colors rounded-md dark:text-light hover:bg-white dark:hover:bg-white"
+                        :class="{'bg-white dark:bg-white': isActive || open}" role="button"
+                        aria-haspopup="true" :aria-expanded="(open || isActive) ? 'true' : 'false'">
+                        <span aria-hidden="true">
+                            <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                            </svg>
+                        </span>
+                        <span class="ml-2 text-sm"> Dashboards </span>
+                    </a>
+                    <div x-data="{ isActive: false, open: false}">
+                        <!-- active & hover classes 'bg-white dark:bg-white' -->
+                        <a href="#" @click="$event.preventDefault(); open = !open"
+                            class="flex items-center p-2 text-gray-500 transition-colors rounded-md dark:text-light hover:bg-white dark:hover:bg-white"
+                            :class="{'bg-white dark:bg-white': isActive || open}" role="button"
+                            aria-haspopup="true" :aria-expanded="(open || isActive) ? 'true' : 'false'">
+                            <span aria-hidden="true">
+                                <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                                </svg>
+                            </span>
+                            <span class="ml-2 text-sm"> Dashboards </span>
+                            <span class="ml-auto" aria-hidden="true">
+                                <!-- active class 'rotate-180' -->
+                                <svg class="w-4 h-4 transition-transform transform" :class="{ 'rotate-180': open }"
+                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </span>
+                        </a>
+                        <div role="menu" x-show="open" class="mt-2 space-y-2 px-7" aria-label="Dashboards">
+                            <!-- active & hover classes 'text-gray-700 dark:text-light' -->
+                            <!-- inActive classes 'text-gray-400 dark:text-gray-400' -->
+                            <a href="#" role="menuitem"
+                                class="block p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:text-gray-400 dark:hover:text-light hover:text-gray-700">
+                                Default
+                            </a>
+                            <a href="#" role="menuitem"
+                                class="block p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700">
+                                Project Mangement
+                            </a>
+                            <a href="#" role="menuitem"
+                                class="block p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700">
+                                E-Commerce
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Layouts links -->
+                    <div x-data="{ isActive: true, open: true}">
+                        <!-- active & hover classes 'bg-white dark:bg-white' -->
+                        <a href="#" @click="$event.preventDefault(); open = !open"
+                            class="flex items-center p-2 text-gray-500 transition-colors rounded-md dark:text-light hover:bg-white dark:hover:bg-white"
+                            :class="{'bg-white dark:bg-white': isActive || open}" role="button"
+                            aria-haspopup="true" :aria-expanded="(open || isActive) ? 'true' : 'false'">
+                            <span aria-hidden="true">
+                                <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                                </svg>
+                            </span>
+                            <span class="ml-2 text-sm"> Layouts </span>
+                            <span aria-hidden="true" class="ml-auto">
+                                <!-- active class 'rotate-180' -->
+                                <svg class="w-4 h-4 transition-transform transform" :class="{ 'rotate-180': open }"
+                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </span>
+                        </a>
+                        <div x-show="open" class="mt-2 space-y-2 px-7" role="menu" aria-label="Authentication">
+                            <!-- active & hover classes 'text-gray-700 dark:text-light' -->
+                            <!-- inActive classes 'text-gray-400 dark:text-gray-400' -->
+                            <a href="#" role="menuitem"
+                                class="block p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:text-gray-400 dark:hover:text-light hover:text-gray-700">
+                                Two Columns Sidebar
+                            </a>
+                            <a href="#" role="menuitem"
+                                class="block p-2 text-sm text-gray-700 transition-colors duration-200 rounded-md dark:text-light dark:hover:text-light hover:text-gray-700">
+                                Mini + One Columns Sidebar
+                            </a>
+                        </div>
+                    </div>
+                </nav>
             </div>
             <div class="fixed bottom-0 h-16 px-4 w-60">
-                <a 
-                    href="javascript:void(0)"
-                    class="flex items-center px-2 py-2 text-gray-600 bg-white rounded-md"
-                >
-                    <img class="w-10 h-10 p-[0.1rem] mr-3 rounded-full ring-2 ring-green-400 dark:ring-green-600" src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="Bordered avatar">
+                <a href="javascript:void(0)" class="flex items-center px-2 py-2 text-gray-600 bg-white rounded-md">
+                    <img class="w-10 h-10 p-[0.1rem] mr-3 rounded-full ring-2 ring-green-400 dark:ring-green-600"
+                        src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="Bordered avatar">
                     <div>
                         <h3 class="text-sm font-bold ">Herdi Ehza Saputra</h3>
                         <p class="text-xs">Administrator</p>
@@ -95,161 +190,157 @@
 
     <div class="flex flex-col">
         <header class="fixed top-0 left-0 right-0 h-16 px-4 py-3 md:left-60">
-            <div class="max-w-4xl mx-auto">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <button type="button"
-                            class="flex items-center p-2 font-semibold text-gray-600 transition border border-transparent rounded-lg focus:outline-none hover:text-yellow-600 focus:text-yellow-600 hover:border-yellow-300 focus:border-yellow-300">
-                            <span
-                                class="inline-flex items-center justify-center w-6 h-6 mr-2 text-xs text-gray-600 transition bg-white rounded">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor"
-                                    class="bi bi-chevron-left" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd"
-                                        d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
-                                </svg>
-                            </span>
-                            <span class="text-sm">Archive</span>
-                        </button>
-                    </div>
-                    <div class="text-lg font-bold">Today's Plan</div>
-                    <div>
-                        <button type="button"
-                            class="flex items-center p-2 font-semibold text-gray-600 transition border border-transparent rounded-lg focus:outline-none hover:text-yellow-600 focus:text-yellow-600 hover:border-yellow-300 focus:border-yellow-300">
-                            <span class="text-sm">This week</span>
-                            <span
-                                class="inline-flex items-center justify-center w-6 h-6 ml-2 text-xs text-gray-600 transition bg-white rounded">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor"
-                                    class="bi bi-chevron-right" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd"
-                                        d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
-                                </svg>
-                            </span>
-                        </button>
-                    </div>
+            <div class="flex items-center justify-between">
+                <div>
+                    <button type="button"
+                        class="flex items-center p-2 font-semibold text-gray-600 transition border border-transparent rounded-lg focus:outline-none hover:text-yellow-600 focus:text-yellow-600 hover:border-yellow-300 focus:border-yellow-300">
+                        <span
+                            class="inline-flex items-center justify-center w-6 h-6 mr-2 text-xs text-gray-600 transition bg-white rounded">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor"
+                                class="bi bi-chevron-left" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
+                            </svg>
+                        </span>
+                        <span class="text-sm">Archive</span>
+                    </button>
+                </div>
+                <div class="text-lg font-bold">Today's Plan</div>
+                <div>
+                    <button type="button"
+                        class="flex items-center p-2 font-semibold text-gray-600 transition border border-transparent rounded-lg focus:outline-none hover:text-yellow-600 focus:text-yellow-600 hover:border-yellow-300 focus:border-yellow-300">
+                        <span class="text-sm">This week</span>
+                        <span
+                            class="inline-flex items-center justify-center w-6 h-6 ml-2 text-xs text-gray-600 transition bg-white rounded">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor"
+                                class="bi bi-chevron-right" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+                            </svg>
+                        </span>
+                    </button>
                 </div>
             </div>
         </header>
 
         <main class="h-[calc(100vh-4rem)] mt-16 overflow-auto ml-0 md:ml-60">
             <div class="px-6 py-8">
-                <div class="max-w-4xl mx-auto">
-                    <div class="p-8 mb-5 bg-white rounded-3xl">
-                        <h1 class="mb-10 text-3xl font-bold">Messaging ID framework development for the marketing branch
-                        </h1>
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-stretch">
-                                <div class="text-xs text-gray-400">Members<br>connected</div>
-                                <div class="mx-4 border-l h-100"></div>
-                                <div class="flex -space-x-3 flex-nowrap">
-                                    <div class="h-9 w-9">
-                                        <img class="object-cover w-full h-full rounded-full"
-                                            src="https://ui-avatars.com/api/?background=random">
-                                    </div>
-                                    <div class="h-9 w-9">
-                                        <img class="object-cover w-full h-full rounded-full"
-                                            src="https://ui-avatars.com/api/?background=random">
-                                    </div>
+                <div class="p-8 mb-5 bg-white rounded-3xl">
+                    <h1 class="mb-10 text-3xl font-bold">Messaging ID framework development for the marketing branch
+                    </h1>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-stretch">
+                            <div class="text-xs text-gray-400">Members<br>connected</div>
+                            <div class="mx-4 border-l h-100"></div>
+                            <div class="flex -space-x-3 flex-nowrap">
+                                <div class="h-9 w-9">
+                                    <img class="object-cover w-full h-full rounded-full"
+                                        src="https://ui-avatars.com/api/?background=random">
                                 </div>
-                            </div>
-                            <div class="flex items-center gap-x-2">
-                                <button type="button"
-                                    class="inline-flex items-center justify-center px-3 text-gray-800 transition border h-9 rounded-xl hover:border-gray-400 hover:text-gray-900">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor"
-                                        class="bi bi-chat-fill" viewBox="0 0 16 16">
-                                        <path
-                                            d="M8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6-.097 1.016-.417 2.13-.771 2.966-.079.186.074.394.273.362 2.256-.37 3.597-.938 4.18-1.234A9.06 9.06 0 0 0 8 15z" />
-                                    </svg>
-                                </button>
-                                <button type="button"
-                                    class="inline-flex items-center justify-center px-5 text-sm font-semibold text-gray-300 transition bg-gray-900 h-9 rounded-xl hover:text-white">
-                                    Open
-                                </button>
+                                <div class="h-9 w-9">
+                                    <img class="object-cover w-full h-full rounded-full"
+                                        src="https://ui-avatars.com/api/?background=random">
+                                </div>
                             </div>
                         </div>
-    
-                        <hr class="my-10">
-    
-                        <div class="grid grid-cols-2 gap-x-20">
-                            <div>
-                                <h2 class="mb-4 text-2xl font-bold">Stats</h2>
-    
-                                <div class="grid grid-cols-2 gap-4">
-                                    <div class="col-span-2">
-                                        <div class="p-4 bg-green-100 rounded-xl">
-                                            <div class="text-xl font-bold leading-none text-gray-800">Good day, <br>Kristin
-                                            </div>
-                                            <div class="mt-5">
-                                                <button type="button"
-                                                    class="inline-flex items-center justify-center px-3 py-2 text-sm font-semibold text-gray-800 transition bg-white rounded-xl hover:text-green-500">
-                                                    Start tracking
-                                                </button>
-                                            </div>
+                        <div class="flex items-center gap-x-2">
+                            <button type="button"
+                                class="inline-flex items-center justify-center px-3 text-gray-800 transition border h-9 rounded-xl hover:border-gray-400 hover:text-gray-900">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor"
+                                    class="bi bi-chat-fill" viewBox="0 0 16 16">
+                                    <path
+                                        d="M8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6-.097 1.016-.417 2.13-.771 2.966-.079.186.074.394.273.362 2.256-.37 3.597-.938 4.18-1.234A9.06 9.06 0 0 0 8 15z" />
+                                </svg>
+                            </button>
+                            <button type="button"
+                                class="inline-flex items-center justify-center px-5 text-sm font-semibold text-gray-300 transition bg-gray-900 h-9 rounded-xl hover:text-white">
+                                Open
+                            </button>
+                        </div>
+                    </div>
+
+                    <hr class="my-10">
+
+                    <div class="grid grid-cols-2 gap-x-20">
+                        <div>
+                            <h2 class="mb-4 text-2xl font-bold">Stats</h2>
+
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="col-span-2">
+                                    <div class="p-4 bg-green-100 rounded-xl">
+                                        <div class="text-xl font-bold leading-none text-gray-800">Good day, <br>Kristin
+                                        </div>
+                                        <div class="mt-5">
+                                            <button type="button"
+                                                class="inline-flex items-center justify-center px-3 py-2 text-sm font-semibold text-gray-800 transition bg-white rounded-xl hover:text-green-500">
+                                                Start tracking
+                                            </button>
                                         </div>
                                     </div>
-                                    <div class="p-4 text-gray-800 bg-yellow-100 rounded-xl">
-                                        <div class="text-2xl font-bold leading-none">20</div>
-                                        <div class="mt-2">Tasks finished</div>
-                                    </div>
-                                    <div class="p-4 text-gray-800 bg-yellow-100 rounded-xl">
-                                        <div class="text-2xl font-bold leading-none">5,5</div>
-                                        <div class="mt-2">Tracked hours</div>
-                                    </div>
-                                    <div class="col-span-2">
-                                        <div class="p-4 text-gray-800 bg-purple-100 rounded-xl">
-                                            <div class="text-xl font-bold leading-none">Your daily plan</div>
-                                            <div class="mt-2">5 of 8 completed</div>
-                                        </div>
+                                </div>
+                                <div class="p-4 text-gray-800 bg-yellow-100 rounded-xl">
+                                    <div class="text-2xl font-bold leading-none">20</div>
+                                    <div class="mt-2">Tasks finished</div>
+                                </div>
+                                <div class="p-4 text-gray-800 bg-yellow-100 rounded-xl">
+                                    <div class="text-2xl font-bold leading-none">5,5</div>
+                                    <div class="mt-2">Tracked hours</div>
+                                </div>
+                                <div class="col-span-2">
+                                    <div class="p-4 text-gray-800 bg-purple-100 rounded-xl">
+                                        <div class="text-xl font-bold leading-none">Your daily plan</div>
+                                        <div class="mt-2">5 of 8 completed</div>
                                     </div>
                                 </div>
                             </div>
-                            <div>
-                                <h2 class="mb-4 text-2xl font-bold">Your tasks today</h2>
-    
-                                <div class="space-y-4">
-                                    <div class="p-4 space-y-2 text-gray-800 bg-white border rounded-xl">
-                                        <div class="flex justify-between">
-                                            <div class="text-xs text-gray-400">Number 10</div>
-                                            <div class="text-xs text-gray-400">4h</div>
-                                        </div>
-                                        <a href="javascript:void(0)"
-                                            class="font-bold hover:text-yellow-800 hover:underline">Blog and social
-                                            posts</a>
-                                        <div class="text-sm text-gray-600">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
-                                                fill="currentColor" class="inline mr-1 text-gray-800 align-middle"
-                                                viewBox="0 0 16 16">
-                                                <path
-                                                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
-                                            </svg>Deadline is today
-                                        </div>
+                        </div>
+                        <div>
+                            <h2 class="mb-4 text-2xl font-bold">Your tasks today</h2>
+
+                            <div class="space-y-4">
+                                <div class="p-4 space-y-2 text-gray-800 bg-white border rounded-xl">
+                                    <div class="flex justify-between">
+                                        <div class="text-xs text-gray-400">Number 10</div>
+                                        <div class="text-xs text-gray-400">4h</div>
                                     </div>
-                                    <div class="p-4 space-y-2 text-gray-800 bg-white border rounded-xl">
-                                        <div class="flex justify-between">
-                                            <div class="text-xs text-gray-400">Grace Aroma</div>
-                                            <div class="text-xs text-gray-400">7d</div>
-                                        </div>
-                                        <a href="javascript:void(0)"
-                                            class="font-bold hover:text-yellow-800 hover:underline">New campaign review</a>
-                                        <div class="text-sm text-gray-600">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
-                                                fill="currentColor" class="inline mr-1 text-gray-800 align-middle"
-                                                viewBox="0 0 16 16">
-                                                <path
-                                                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
-                                            </svg>New feedback
-                                        </div>
+                                    <a href="javascript:void(0)"
+                                        class="font-bold hover:text-yellow-800 hover:underline">Blog and social
+                                        posts</a>
+                                    <div class="text-sm text-gray-600">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
+                                            fill="currentColor" class="inline mr-1 text-gray-800 align-middle"
+                                            viewBox="0 0 16 16">
+                                            <path
+                                                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
+                                        </svg>Deadline is today
                                     </div>
-                                    <div class="p-4 space-y-2 text-gray-800 bg-white border rounded-xl">
-                                        <div class="flex justify-between">
-                                            <div class="text-xs text-gray-400">Petz App</div>
-                                            <div class="text-xs text-gray-400">2h</div>
-                                        </div>
-                                        <a href="javascript:void(0)"
-                                            class="font-bold hover:text-yellow-800 hover:underline">Cross-platform and
-                                            browser QA</a>
-                                    </div>
-    
                                 </div>
+                                <div class="p-4 space-y-2 text-gray-800 bg-white border rounded-xl">
+                                    <div class="flex justify-between">
+                                        <div class="text-xs text-gray-400">Grace Aroma</div>
+                                        <div class="text-xs text-gray-400">7d</div>
+                                    </div>
+                                    <a href="javascript:void(0)"
+                                        class="font-bold hover:text-yellow-800 hover:underline">New campaign review</a>
+                                    <div class="text-sm text-gray-600">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
+                                            fill="currentColor" class="inline mr-1 text-gray-800 align-middle"
+                                            viewBox="0 0 16 16">
+                                            <path
+                                                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
+                                        </svg>New feedback
+                                    </div>
+                                </div>
+                                <div class="p-4 space-y-2 text-gray-800 bg-white border rounded-xl">
+                                    <div class="flex justify-between">
+                                        <div class="text-xs text-gray-400">Petz App</div>
+                                        <div class="text-xs text-gray-400">2h</div>
+                                    </div>
+                                    <a href="javascript:void(0)"
+                                        class="font-bold hover:text-yellow-800 hover:underline">Cross-platform and
+                                        browser QA</a>
+                                </div>
+
                             </div>
                         </div>
                     </div>

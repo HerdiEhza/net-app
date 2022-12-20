@@ -1,37 +1,38 @@
-<nav class="absolute top-0 left-0 z-10 flex items-center w-full p-4 bg-transparent md:flex-row md:flex-nowrap md:justify-start">
-    <div class="flex flex-wrap items-center justify-between w-full px-4 mx-auto md:flex-nowrap md:px-10">
-        <a class="hidden text-sm font-semibold text-white uppercase lg:inline-block" href="#">
-            {{-- Dashboard --}}
-        </a>
-
-        {{-- If you use user icon and menu add margin mr-3 to search --}}
-        {{-- <form class="flex-row flex-wrap items-center hidden mr-3 md:flex lg:ml-auto"> --}}
-        <form class="flex-row flex-wrap items-center hidden md:flex lg:ml-auto">
-
-        </form>
-
-
-
+<header class="fixed top-0 left-0 right-0 h-16 px-4 py-3 md:left-60">
+    <div class="flex items-center justify-between">
+        <div>
+            <button type="button"
+                class="flex items-center p-2 font-semibold text-gray-600 transition border border-transparent rounded-lg focus:outline-none hover:text-yellow-600 focus:text-yellow-600 hover:border-yellow-300 focus:border-yellow-300">
+                <span
+                    class="inline-flex items-center justify-center w-6 h-6 mr-2 text-xs text-gray-600 transition bg-white rounded">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor"
+                        class="bi bi-chevron-left" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
+                    </svg>
+                </span>
+                <span class="text-sm">Archive</span>
+            </button>
+        </div>
+        <div class="text-lg font-bold">Today's Plan</div>
         @if(file_exists(app_path('Http/Livewire/LanguageSwitcher.php')))
-            <ul class="flex-col items-center hidden list-none md:flex-row md:flex">
+            <ul class="flex-col items-center hidden list-none md:flex-row md:flex bg-blueGray-400">
                 <livewire:language-switcher />
             </ul>
         @endif
-
-        {{-- User icon and menu --}}
-        {{--
-        <ul class="flex-col items-center hidden list-none md:flex-row md:flex">
-            <a class="block text-blueGray-500" href="#pablo" onclick="openDropdown(event,'user-dropdown')">
-                <div class="flex items-center">
-                    <span class="inline-flex items-center justify-center w-12 h-12 text-sm text-white rounded-full bg-blueGray-200"><img alt="..." class="w-full align-middle border-none rounded-full shadow-lg" src="https://demos.creative-tim.com/notus-js/assets/img/team-1-800x800.jpg" /></span>
-                </div>
-            </a>
-            <div class="z-50 hidden float-left py-2 text-base text-left list-none bg-white rounded shadow-lg min-w-48" id="user-dropdown">
-                <a href="#pablo" class="block w-full px-4 py-2 text-sm font-normal bg-transparent whitespace-nowrap text-blueGray-700">Action</a><a href="#pablo" class="block w-full px-4 py-2 text-sm font-normal bg-transparent whitespace-nowrap text-blueGray-700">Another action</a><a href="#pablo" class="block w-full px-4 py-2 text-sm font-normal bg-transparent whitespace-nowrap text-blueGray-700">Something else here</a>
-                <div class="h-0 my-2 border border-solid border-blueGray-100"></div>
-                <a href="#pablo" class="block w-full px-4 py-2 text-sm font-normal bg-transparent whitespace-nowrap text-blueGray-700">Seprated link</a>
-            </div>
-        </ul>
-         --}}
+        <div>
+            <button type="button"
+                class="flex items-center p-2 font-semibold text-gray-600 transition border border-transparent rounded-lg focus:outline-none hover:text-yellow-600 focus:text-yellow-600 hover:border-yellow-300 focus:border-yellow-300">
+                <span class="text-sm">This week</span>
+                <span
+                    class="inline-flex items-center justify-center w-6 h-6 ml-2 text-xs text-gray-600 transition bg-white rounded">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor"
+                        class="bi bi-chevron-right" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+                    </svg>
+                </span>
+            </button>
+        </div>
     </div>
-</nav>
+</header>

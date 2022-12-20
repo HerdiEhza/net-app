@@ -1,5 +1,5 @@
 {
-    "name": "Net-App",
+    "name": "laravel/laravel",
     "type": "project",
     "description": "RT/RW Net App",
     "keywords": ["framework", "laravel"],

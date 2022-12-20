@@ -14,22 +14,6 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles
     @stack('styles')
-
-    <style>
-        /* Only the scroll bar */
-        ::-webkit-scrollbar {
-            width: .5rem;
-            height: .5rem;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: rgba(0, 0, 0, .15);
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: rgba(0, 0, 0, .3);
-        }
-    </style>
 </head>
 
 <body class="antialiased text-blueGray-800">
@@ -39,20 +23,22 @@
     <div id="app">
         <x-sidebar />
 
-        <div class="flex flex-col">
+        <div class="relative min-h-screen md:ml-64 bg-blueGray-50">
             <x-nav />
 
-            @if(session('status'))
+            <div class="relative pt-12 pb-32 bg-pink-600 md:pt-32">
+                <div class="w-full px-4 mx-auto md:px-10">&nbsp;</div>
+            </div>
+
+            <div class="relative w-full min-h-full px-4 mx-auto mt-32 md:px-10">
+                @if(session('status'))
                 <x-alert message="{{ session('status') }}" variant="indigo" role="alert" />
-            @endif
+                @endif
 
-            {{-- {{ $slot }} --}}
-            <main class="h-[calc(100vh-4rem)] z-10 mt-16 overflow-auto ml-0 md:ml-60">
-                <div class="px-6 py-8">
-                    @yield('content')
-                </div>
-            </main>
+                @yield('content')
 
+                <x-footer />
+            </div>
         </div>
 
     </div>
