@@ -281,7 +281,7 @@
         <div class="fixed bottom-0 h-16 px-4 w-60">
             <x-profile-dropdown align="bottom">
                 <x-slot name="trigger">
-                    <button class="flex items-center px-2 py-2 text-gray-600 bg-white rounded-md">
+                    <button class="flex items-center w-full px-2 py-2 text-gray-600 bg-white rounded-md">
                         <img class="w-10 h-10 p-[0.1rem] mr-3 rounded-full ring-2 ring-green-400 dark:ring-green-600"
                             src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="Bordered avatar">
                         <div class="text-left">

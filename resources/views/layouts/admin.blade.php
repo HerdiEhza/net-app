@@ -47,12 +47,12 @@
             @endif
 
             <main class="h-[calc(100vh-4rem)] z-10 mt-16 overflow-auto ml-0 md:ml-60">
-                <div class="px-6 py-8">
+                {{-- <div class="px-6 py-8"> --}}
                     @isset($slot)
                         {{ $slot }}
                     @endisset
                     {{-- @yield('content') --}}
-                </div>
+                {{-- </div> --}}
             </main>
 
         </div>
