@@ -1,21 +1,24 @@
-@extends('layouts.admin')
-@section('content')
-<div class="row">
-    <div class="card bg-blueGray-100">
-        <div class="card-header">
-            <div class="card-header-container">
-                <h6 class="card-title">
-                    {{ trans('global.edit') }}
-                    {{ trans('cruds.supportTicket.title_singular') }}:
-                    {{ trans('cruds.supportTicket.fields.id') }}
-                    {{ $supportTicket->id }}
-                </h6>
+<x-admin-layout>
+    <x-slot name="header">
+        {{ __('Profile') }}
+    </x-slot>
+    
+    <div class="row">
+        <div class="card bg-blueGray-100">
+            <div class="card-header">
+                <div class="card-header-container">
+                    <h6 class="card-title">
+                        {{ trans('global.edit') }}
+                        {{ trans('cruds.supportTicket.title_singular') }}:
+                        {{ trans('cruds.supportTicket.fields.id') }}
+                        {{ $supportTicket->id }}
+                    </h6>
+                </div>
+            </div>
+
+            <div class="card-body">
+                @livewire('support-ticket.edit', [$supportTicket])
             </div>
         </div>
-
-        <div class="card-body">
-            @livewire('support-ticket.edit', [$supportTicket])
-        </div>
     </div>
-</div>
-@endsection
+</x-admin-layout>

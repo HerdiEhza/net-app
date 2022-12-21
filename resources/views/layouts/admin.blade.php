@@ -46,16 +46,20 @@
                 <x-alert message="{{ session('status') }}" variant="indigo" role="alert" />
             @endif
 
-            {{-- {{ $slot }} --}}
             <main class="h-[calc(100vh-4rem)] z-10 mt-16 overflow-auto ml-0 md:ml-60">
                 <div class="px-6 py-8">
-                    @yield('content')
+                    @isset($slot)
+                        {{ $slot }}
+                    @endisset
+                    {{-- @yield('content') --}}
                 </div>
             </main>
 
         </div>
 
     </div>
+
+    <script src="https://unpkg.com/flowbite@1.5.5/dist/flowbite.js"></script>
 
     <form id="logoutform" action="{{ route('logout') }}" method="POST" style="display: none;">
         {{ csrf_field() }}

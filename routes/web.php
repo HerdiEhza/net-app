@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\KasKeluarController;
+use App\Http\Controllers\Admin\KasKeuanganController;
 use App\Http\Controllers\Admin\KasMasukController;
 use App\Http\Controllers\Admin\ListTagihanController;
 use App\Http\Controllers\Admin\LokasiPemasanganController;
@@ -87,6 +88,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth']], 
     Route::resource('list-tagihans', ListTagihanController::class, ['except' => ['store', 'update', 'destroy']]);
 
     // Kas Keluar
+    Route::resource('kas-keuangan', KasKeuanganController::class, ['except' => ['store', 'update', 'destroy']]);
+
+    // Kas Keluar
     Route::resource('kas-keluars', KasKeluarController::class, ['except' => ['store', 'update', 'destroy']]);
 
     // Kas Masuk
@@ -106,10 +110,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth']], 
     Route::resource('settings', SettingController::class, ['except' => ['store', 'update', 'destroy']]);
 });
 
-Route::group(['prefix' => 'profile', 'as' => 'profile.', 'middleware' => ['auth']], function () {
-    if (file_exists(app_path('Http/Controllers/Auth/UserProfileController.php'))) {
-        Route::get('/', [UserProfileController::class, 'show'])->name('show');
-    }
-});
+// Route::group(['prefix' => 'profile', 'as' => 'profile.', 'middleware' => ['auth']], function () {
+//     if (file_exists(app_path('Http/Controllers/Auth/UserProfileController.php'))) {
+//         Route::get('/', [UserProfileController::class, 'show'])->name('show');
+//     }
+// });
 
 require __DIR__.'/auth.php';

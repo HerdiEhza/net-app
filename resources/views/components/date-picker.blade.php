@@ -1,11 +1,11 @@
 <div wire:ignore>
     <div class="flatpickr flatpickr-{{ $attributes['id'] }} relative">
         @if(!isset($attributes['required']))
-            <div class="absolute inset-y-0 left-0 flex items-center">
-                <button id="clear-{{ $attributes['id'] }}" type="button" class="w-10 h-full text-rose-600" data-clear>
-                    <i class="far fa-times-circle"></i>
-                </button>
-            </div>
+        <div class="absolute inset-y-0 left-0 flex items-center">
+            <button id="clear-{{ $attributes['id'] }}" type="button" class="w-10 h-full text-rose-600" data-clear>
+                <i class="far fa-times-circle"></i>
+            </button>
+        </div>
         @endif
 
         <input type="text" class="form-control" {{ $attributes }} data-input>
@@ -13,25 +13,25 @@
 </div>
 
 @push('scripts')
-    <script>
-        document.addEventListener("livewire:load", () => {
-    function update(value) {
-        let el = document.getElementById('clear-{{ $attributes['id'] }}')
+<script>
+    document.addEventListener("livewire:load", () => {
+        function update(value) {
+            let el = document.getElementById('clear-{{ $attributes['id'] }}')
 
-        if (value === '') {
-            value = null
+            if (value === '') {
+                value = null
 
-            if (el !== null) {
-                el.classList.add('invisible')
+                if (el !== null) {
+                    el.classList.add('invisible')
+                }
+            } else if (el !== null) {
+                el.classList.remove('invisible')
             }
-        } else if (el !== null) {
-            el.classList.remove('invisible')
-        }
 
-@this.set('{{ $attributes['wire:model'] }}', value)
+        @this.set('{{ $attributes['wire:model'] }}', value)
     }
 
-@if($attributes['picker'] === 'date')
+    @if($attributes['picker'] === 'date')
         let el = flatpickr('.flatpickr-{{ $attributes['id'] }}', {
             dateFormat: "{{ config('project.flatpickr_date_format') }}",
             wrap: true,
@@ -42,7 +42,7 @@
                 update(DateStr)
             }
         })
-@elseif($attributes['picker'] === 'time')
+    @elseif($attributes['picker'] === 'time')
         let el = flatpickr('.flatpickr-{{ $attributes['id'] }}', {
             enableTime: true,
             // enableSeconds: true,
@@ -57,7 +57,7 @@
                 update(DateStr)
             }
         })
-@else
+    @else
         let el = flatpickr('.flatpickr-{{ $attributes['id'] }}', {
             enableTime: true,
             time_24hr: true,
@@ -71,7 +71,7 @@
                 update(DateStr)
             }
         })
-@endif
+    @endif
 });
-    </script>
+</script>
 @endpush

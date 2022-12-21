@@ -1,19 +1,22 @@
-@extends('layouts.admin')
-@section('content')
-<div class="row">
-    <div class="card bg-blueGray-100">
-        <div class="card-header">
-            <div class="card-header-container">
-                <h6 class="card-title">
-                    {{ trans('global.create') }}
-                    {{ trans('cruds.pelanggan.title_singular') }}
-                </h6>
+<x-admin-layout>
+    <x-slot name="header">
+        {{ __('Profile') }}
+    </x-slot>
+    
+    <div class="row">
+        <div class="card bg-blueGray-100">
+            <div class="card-header">
+                <div class="card-header-container">
+                    <h6 class="card-title">
+                        {{ trans('global.create') }}
+                        {{ trans('cruds.pelanggan.title_singular') }}
+                    </h6>
+                </div>
+            </div>
+
+            <div class="card-body">
+                @livewire('pelanggan.create')
             </div>
         </div>
-
-        <div class="card-body">
-            @livewire('pelanggan.create')
-        </div>
     </div>
-</div>
-@endsection
+</x-admin-layout>
