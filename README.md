@@ -8,3 +8,6 @@ php artisan key:generate
 php artisan cache:clear
 php artisan view:clear
 php artisan package:discover
+
+<!-- oneline command -->
+php artisan key:generate && php artisan cache:clear && php artisan view:clear && php artisan package:discover
